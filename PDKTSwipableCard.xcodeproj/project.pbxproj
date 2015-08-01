@@ -12,6 +12,7 @@
 		C70B34491B6D204900D9D56C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C70B34471B6D204900D9D56C /* Main.storyboard */; };
 		C70B344B1B6D204900D9D56C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C70B344A1B6D204900D9D56C /* Assets.xcassets */; };
 		C70B344E1B6D204900D9D56C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C70B344C1B6D204900D9D56C /* LaunchScreen.storyboard */; };
+		C70B34571B6D207200D9D56C /* CardBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70B34561B6D207200D9D56C /* CardBehaviour.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,8 @@
 		C70B344A1B6D204900D9D56C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C70B344D1B6D204900D9D56C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C70B344F1B6D204900D9D56C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C70B34551B6D207200D9D56C /* CardBehaviour-BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CardBehaviour-BridgingHeader.h"; sourceTree = "<group>"; };
+		C70B34561B6D207200D9D56C /* CardBehaviour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardBehaviour.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +62,8 @@
 				C70B34471B6D204900D9D56C /* Main.storyboard */,
 				C70B344A1B6D204900D9D56C /* Assets.xcassets */,
 				C70B344C1B6D204900D9D56C /* LaunchScreen.storyboard */,
+				C70B34551B6D207200D9D56C /* CardBehaviour-BridgingHeader.h */,
+				C70B34561B6D207200D9D56C /* CardBehaviour.swift */,
 				C70B344F1B6D204900D9D56C /* Info.plist */,
 			);
 			path = PDKTSwipableCard;
@@ -136,6 +141,7 @@
 			files = (
 				C70B34461B6D204900D9D56C /* ViewController.swift in Sources */,
 				C70B34441B6D204900D9D56C /* AppDelegate.swift in Sources */,
+				C70B34571B6D207200D9D56C /* CardBehaviour.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +258,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.produkt.PDKTSwipableCard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PDKTSwipableCard/CardBehaviour-BridgingHeader.h";
 			};
 			name = Debug;
 		};
@@ -263,6 +270,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.produkt.PDKTSwipableCard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PDKTSwipableCard/CardBehaviour-BridgingHeader.h";
 			};
 			name = Release;
 		};
