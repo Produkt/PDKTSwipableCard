@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     
     let midSectionWidth : CGFloat = 360
     let itemAspectRatio: CGFloat = 0.9
-    var offset = CGPoint.zeroPoint
+    var offset = CGPoint.zero
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,20 +26,20 @@ class ViewController: UIViewController {
     }
     
     func setupSquareView() {
-        let screenBounds = UIScreen.mainScreen().bounds
+		let screenBounds = UIScreen.main.bounds
         let length = floor(0.3  * max(screenBounds.width, screenBounds.height))
         itemView = UIView(frame: CGRect(x: screenBounds.width/2 - 100, y: screenBounds.height/2, width: length, height: floor(length / itemAspectRatio)))
         itemView.autoresizingMask = []
         itemView.layer.cornerRadius = 10
-        itemView.backgroundColor = UIColor.blueColor()
+        itemView.backgroundColor = UIColor.blue
     }
     
     func addGestureRecognizers() {
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "pan:")
+		let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(pan(pan:)))
         itemView.addGestureRecognizer(panGestureRecognizer)
         view.addSubview(itemView)
         
-        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "longPress:")
+		let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPress(longPress:)))
         view.addGestureRecognizer(longPressGestureRecognizer)
     }
     
@@ -51,47 +51,47 @@ class ViewController: UIViewController {
     }
     
     func pan(pan: UIPanGestureRecognizer) {
-        var location = pan.locationInView(view)
-        let xDistance = itemView.center.x - CGRectGetWidth(view.frame)/2
+		var location = pan.location(in: view)
+        let xDistance = itemView.center.x - (view.frame.width)/2
         
         switch pan.state {
-        case .Began:
+		case .began:
             let center = itemView.center
             offset.x = location.x - center.x
             offset.y = location.y - center.y
             cardBehavior.isEnabled = false
-            UIView.animateWithDuration(1.0, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: UIViewAnimationOptions.AllowUserInteraction, animations: { () -> Void in
-                self.itemView.transform = CGAffineTransformScale(self.itemView.transform, 1.2, 1.2)
+			UIView.animate(withDuration: 1.0, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: UIViewAnimationOptions.allowUserInteraction, animations: { () -> Void in
+				self.itemView.transform = CGAffineTransform.init(scaleX: 1.2, y: 1.2)
                 }, completion: nil)
             
-        case .Changed:
+		case .changed:
             location.x -= offset.x
             location.y -= offset.y
             
             itemView.center = location
-            itemView.transform = CGAffineTransformMakeRotation(xDistance/500)
-            itemView.backgroundColor = colorForXPosition(xDistance)
+            itemView.transform = CGAffineTransform.init(rotationAngle: xDistance/500)
+            itemView.backgroundColor = colorForXPosition(xPosition:  xDistance)
             
-        case .Cancelled, .Ended:
-            UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: UIViewAnimationOptions.AllowUserInteraction, animations: { () -> Void in
-                self.itemView.transform = CGAffineTransformIdentity
+		case .cancelled, .ended:
+			UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: UIViewAnimationOptions.allowUserInteraction, animations: { () -> Void in
+                self.itemView.transform = CGAffineTransform.identity
                 }, completion: nil)
             
-            let velocity = pan.velocityInView(view)
+            let velocity = pan.velocity(in: view)
             cardBehavior.isEnabled = true
-            cardBehavior.addLinearVelocity(velocity)
+			cardBehavior.addLinearVelocity(velocity: velocity)
         default: ()
         }
     }
     
     func longPress(longPress: UILongPressGestureRecognizer) {
-        guard longPress.state == .Began else { return }
-        animator.debugEnabled = !animator.debugEnabled
+		guard longPress.state == .began else { return }
+		animator.isDebugEnabled = !animator.isDebugEnabled
     }
     
     func colorForXPosition(xPosition : CGFloat) -> UIColor {
-        let bluecolor = UIColor.blueColor()
-        let finalColor = xPosition > 0 ? UIColor.greenColor() : UIColor.redColor()
+		let bluecolor = UIColor.blue
+        let finalColor = xPosition > 0 ? UIColor.green : UIColor.red
         if xPosition < -midSectionWidth/2 {
             return finalColor
         } else if xPosition > midSectionWidth/2 {
@@ -102,10 +102,10 @@ class ViewController: UIViewController {
 }
 
 extension ViewController : UIDynamicAnimatorDelegate {
-    func dynamicAnimatorDidPause(animator: UIDynamicAnimator) {
+	func dynamicAnimatorDidPause(_ animator: UIDynamicAnimator) {
         if itemView.center != view.center {
             itemView.center = view.center
-            itemView.backgroundColor = UIColor.blueColor()
+			itemView.backgroundColor = UIColor.blue
         }
     }
 }

@@ -100,6 +100,7 @@
 				TargetAttributes = {
 					C70B343F1B6D204900D9D56C = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = FT6Z43AJD2;
 					};
 				};
 			};
@@ -254,11 +255,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = FT6Z43AJD2;
 				INFOPLIST_FILE = PDKTSwipableCard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.produkt.PDKTSwipableCard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PDKTSwipableCard/CardBehaviour-BridgingHeader.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -266,11 +269,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = FT6Z43AJD2;
 				INFOPLIST_FILE = PDKTSwipableCard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.produkt.PDKTSwipableCard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PDKTSwipableCard/CardBehaviour-BridgingHeader.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -293,6 +298,7 @@
 				C70B34541B6D204900D9D56C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

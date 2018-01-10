@@ -58,14 +58,14 @@ class CardBehaviour : UIDynamicBehavior {
         }
     }
     
-    override func willMoveToAnimator(dynamicAnimator: UIDynamicAnimator?) {
-        super.willMoveToAnimator(dynamicAnimator)
+	override func willMove(to dynamicAnimator: UIDynamicAnimator?) {
+		super.willMove(to: dynamicAnimator)
         guard let bounds = dynamicAnimator?.referenceView?.bounds else { return }
-        updateFieldsInBounds(bounds)
+		updateFieldsInBounds(bounds: bounds)
     }
     
     func updateFieldsInBounds(bounds: CGRect) {
-        if bounds != CGRect.zeroRect {
+        if bounds != CGRect.zero {
             let itemBounds = item.bounds
             let height = bounds.height
             let width = bounds.width
@@ -87,14 +87,14 @@ class CardBehaviour : UIDynamicBehavior {
             let rightCenter = CGPoint(x: midCenter.x + sideFieldWidth/2 + midSectionWidth/2, y: height/2)
             print("Left, mid, right: \(leftCenter, midCenter, rightCenter)")
 
-            updateRegionForField(fieldBehaviors[VerticalSection.LeftSection.rawValue], leftCenter)
-            updateRegionForField(fieldBehaviors[VerticalSection.MidSection.rawValue], midCenter)
-            updateRegionForField(fieldBehaviors[VerticalSection.RightSection.rawValue], rightCenter)
+           updateRegionForField(field: fieldBehaviors[VerticalSection.LeftSection.rawValue], leftCenter)
+            updateRegionForField(field: fieldBehaviors[VerticalSection.MidSection.rawValue], midCenter)
+            updateRegionForField(field: fieldBehaviors[VerticalSection.RightSection.rawValue], rightCenter)
         }
     }
 
     func addLinearVelocity(velocity: CGPoint) {
-        itemBehavior.addLinearVelocity(velocity, forItem: item)
+		itemBehavior.addLinearVelocity(velocity, for: item)
     }
     
     func positionForSection(section: VerticalSection) -> CGPoint {
@@ -105,7 +105,7 @@ class CardBehaviour : UIDynamicBehavior {
         if let bounds = dynamicAnimator?.referenceView?.bounds {
             let position = item.center
             let thirdWidth = bounds.width / 3.0
-            var rect = CGRect(origin: CGPoint.zeroPoint, size: CGSize(width: thirdWidth, height: bounds.height))
+            var rect = CGRect(origin: CGPoint.zero, size: CGSize(width: thirdWidth, height: bounds.height))
             
             if rect.contains(position) { return .LeftSection }
             
